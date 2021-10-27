@@ -1,0 +1,41 @@
+<h1>TMS</h1>
+<input [(ngModel)]="searchText" placeholder="Enter ID/Name" />
+<br/><br/>
+
+  
+    
+    <div *ngIf="searchText">
+      <table>
+      <tr  *ngFor="let book of bookSearch | filter:searchText">
+        <td>{{book.id}}</td>
+        <td>{{book.name}}</td>
+       </tr>
+      </table>
+    </div>
+  <!-- <tr *ngFor="let book of bookSearch | filter:searchText"> -->
+    <!-- <td>{{book.id}}</td>
+    <td>{{book.name}}</td> -->
+    <!-- <td>{{book.bookName}}</td>
+    <td>{{book.bookId}}</td> -->
+
+  <!-- </tr> -->
+  <button (click)=getData()>Show all records</button>
+  <div *ngIf="books.length">
+  <Table>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>BookName</th>
+      <th>BookId</th>
+    </tr>
+
+    
+  <tr *ngFor="let book of books">
+    <td>{{book.id}}</td>
+    <td>{{book.name}}</td>
+    <td>{{book.bookName}}</td>
+    <td>{{book.bookId}}</td>
+
+  </tr>
+</Table>
+</div>
