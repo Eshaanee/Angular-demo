@@ -1,17 +1,16 @@
-import {DataService} from "./data.service";
- describe('DataService', ()=>{
-   let service: DataService
+import { TestBed } from '@angular/core/testing';
 
-   beforeEach(()=>{
+import { DataService } from './data.service';
 
-   })
+describe('DataService', () => {
+  let service: DataService;
 
-   it('should be zero books at start', ()=>{
-     expect(service.books.length).toBe(0);
-   });
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(DataService);
+  });
 
-   it('should be 4 books when createDb is called', ()=>{
-     service.createDb;
-     expect(service.books.length).toBe(4);
-   })
- })
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+});

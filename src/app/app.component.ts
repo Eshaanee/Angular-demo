@@ -7,6 +7,8 @@ import {CrudService } from './crud.service';
 })
 export class AppComponent {
   title = 'angular-inmemory-api';
+  isClicked:boolean=false;
+  message:String="";
   books:any=[];
   constructor(private cataService: CrudService){
     // this.cataService.getData().subscribe((data: any)=>{
@@ -19,9 +21,30 @@ export class AppComponent {
         this.books=data;
       })
     }
+    addData(){
+      this.isClicked=true;
+      // this.cataService.getData().subscribe((data: any)=>{
+      //   console.log(data);
+      //   this.books=data;
+      // })
+    }
+     
+    registerUser(event:any){
+      const errors : string[] = [];
+      event.preventDefault()
+      console.log(event)
+      const id=event.target.querySelector('#id').value
+      const name=event.target.querySelector('#name').value
+      const bookName=event.target.querySelector('#bookName').value
+      const bookId=event.target.querySelector('#bookId').value
+      
+      this.cataService.addData(id,name,bookName,bookId).subscribe((data:any)=>{
+        return this.message="Data Added";
+      })
+    }
+       
   
-  
-  searchText: any;
+  searchText:any;
   
    bookSearch=[
     {id: 1, name:'Esha',bookName:'Active', bookId:'1'},
